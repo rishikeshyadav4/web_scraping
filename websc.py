@@ -17,7 +17,7 @@ for link in all_links:
          
 data=soup.findall("div",{"class":"c5TXIP"})
 
-for item in g_data:
+for item in data:
     print item.contents[0].find_all("div",{"class":"c3gUW0"})[0].text
     print item.contents[0].find_all("span",{"class":"c1hkC1"})[0].text
     
