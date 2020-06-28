@@ -15,7 +15,7 @@ for link in all_links:
      if "http" in link.get("href"):
          print "<a href='%s'>%s</a>" %(link.get("href"), link.text)
          
-data=soup.findall("div",{"class":"c5TXIP"})
+data=soup.find_all("div",{"class":"c5TXIP"})
 
 for item in data:
     print item.contents[0].find_all("div",{"class":"c3gUW0"})[0].text
