@@ -1,30 +1,27 @@
-#web scraping daraz.com.np
-
 import requests
 from bs4 import BeautifulSoup
-url='https://www.daraz.com.np/catalog/?q=guitar&_keyori=ss&from=input&spm=a2a0e.11779170.search.go.287d2d2bR3WCJo'
-r=requests.get(url)   # r is a variable
-html=r.content    # to see the html content
+#import os,sys
+url='https://robinhood.com/collections/technology'
+r=requests.get(url)
+html=r.content
 
-soup=BeautifulSoup(html) #accessible to beautiful soup
-soup.prettify()
+soup=BeautifulSoup(html,'html.parser') 
 
-all_links=soup.find_all("a")
+#sys.exit()
+all_links=soup.find_all('a')
 
 for link in all_links:
      if "http" in link.get("href"):
-         print "<a href='%s'>%s</a>" %(link.get("href"), link.text)
+         print ("<a href='%s'>%s</a>" %(link.get("href"), link.text))
          
-data=soup.find_all("div",{"class":"c5TXIP"})
+data=soup.find_all("span",{"class":"css-13cafbm"})
 
 for item in data:
-    print item.contents[0].find_all("div",{"class":"c3gUW0"})[0].text
-    print item.contents[0].find_all("span",{"class":"c1hkC1"})[0].text
-    
-    
-      
-      
+    print (item.contents[0].find_all("div",{"class":"kg7H31Ap4MW-dg1bFNOGP"})[0].text)
+    print (item.contents[0].find_all("div",{"class":"kg7H31Ap4MW-dg1bFNOGP"})[0].text)
+    print (item.contents[0].find_all("div",{"class":"_1OFbcHb21BVF-HUMyM5v7i"})[0].text)
 
-
-
-
+#saving the file
+file = open("data1.txt", "w") 
+file.write(str(html))
+file.close()
